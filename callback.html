@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Fabrica de Canais: autorização</title>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<main>
+<h1>Autorização recebida</h1>
+<p id="msg">Voltando para o aplicativo no seu computador…</p>
+<p lang="en">Returning to the app on your computer…</p>
+</main>
+<script>
+  // O login do TikTok volta aqui (redirect URI registrado no app). Esta página só repassa o código
+  // para o publicador que está esperando no próprio computador de quem autorizou. Nada é guardado.
+  (function () {
+    var q = window.location.search;
+    if (!q) { document.getElementById("msg").textContent = "Nenhum código recebido."; return; }
+    window.location.replace("http://127.0.0.1:8765/tiktok/callback" + q);
+  })();
+</script>
+</body>
+</html>
